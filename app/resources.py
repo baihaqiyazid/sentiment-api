@@ -9,6 +9,9 @@ ns = Namespace("api/v1")
 class SentimentAPI(Resource):
     @ns.expect(sentiment_input_model)
     def post(self):
+        if ns.payload["tweet_text"] == None or ns.payload["tweet_text"] == "":
+            return  ResponseFormat(data=None, code=400, status="bad request",  message="no text").to_dict()
+
         output = senti.main(ns.payload["tweet_text"])
         sentiment_data = {
            "classified_text": output['classified_text'],
