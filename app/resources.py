@@ -2,6 +2,7 @@ from flask_restx import Resource, Namespace
 from .api_model import sentiment_input_model
 from .sentistrength_id import senti
 from .response import ResponseFormat
+from werkzeug.exceptions import BadRequest
 
 ns = Namespace("api/v1")
 
@@ -10,7 +11,7 @@ class SentimentAPI(Resource):
     @ns.expect(sentiment_input_model)
     def post(self):
         if ns.payload["tweet_text"] == None or ns.payload["tweet_text"] == "":
-            return  ResponseFormat(data=None, code=400, status="bad request",  message="no text").to_dict()
+            raise BadRequest("No text provided")
 
         output = senti.main(ns.payload["tweet_text"])
         sentiment_data = {
