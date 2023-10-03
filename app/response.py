@@ -6,9 +6,16 @@ class ResponseFormat():
         self.data = data
 
     def to_dict(self):
-        return {
-            "code": self.code,
-            "status": self.status,
-            "message": self.message,
-            "result": self.data
-        }
+        if self.data == None:
+            return {
+                "code": self.code,
+                "status": self.status,
+                "message": self.message,
+            }
+        else:
+            return {
+                "code": self.code,
+                "status": self.status,
+                "message": self.message,
+                "result": self.data
+            }
