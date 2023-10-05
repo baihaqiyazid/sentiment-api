@@ -3,7 +3,7 @@ from flask import Flask
 from app.response import ResponseFormat
 from .extension import api
 from .resources import ns
-from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import BadRequest, InternalServerError, MethodNotAllowed
 
 app = Flask(__name__)
 
@@ -21,8 +21,30 @@ def badRequest(error):
 
     return response, error.code
 
+@api.errorhandler(InternalServerError)
+def internalServerError(error):
+    response = ResponseFormat(
+        code=error.code,
+        data=None, 
+        message=error.description, 
+        status="NOK"
+    ).to_dict()
+
+    return response, error.code
+
+@api.errorhandler(MethodNotAllowed)
+def methodNotFound(error):
+    response = ResponseFormat(
+        code=error.code,
+        data=None, 
+        message="Method Not Found!", 
+        status="NOK"
+    ).to_dict()
+
+    return response, error.code
+
 @app.errorhandler(400)
-def badRequest(error):
+def badRequestSentence(error):
     response = ResponseFormat(
         code=error.code,
         data=None, 
@@ -44,5 +66,5 @@ def notFound(error):
     return response, error.code
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 

@@ -19,6 +19,3 @@ class ResponseFormat():
                 "message": self.message,
                 "result": self.data
             }
-
-class BadRequestException(Exception):
-    pass
