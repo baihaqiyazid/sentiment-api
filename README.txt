@@ -1,5 +1,9 @@
 # Sentiment API
 
+============= Clone this repo =====================
+Using http: git clone https://github.com/baihaqiyazid/sentiment-api.git
+Using ssh : git clone git@github.com:baihaqiyazid/sentiment-api.git
+
 ============= How to run? =====================
 
 Install Library:
