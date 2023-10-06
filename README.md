@@ -65,3 +65,10 @@ you can access this documentation in http://localhost:5000/ on your browser
 ![image](https://github.com/baihaqiyazid/sentiment-api/assets/89854394/34dc4b74-6265-45cd-ad73-3174ea244674)
 #### 2. Contoh mengakses route /dashboard
 ![image](https://github.com/baihaqiyazid/sentiment-api/assets/89854394/60be91eb-2628-40fd-a461-44cefe67e8d3)
+
+### Parameter Not Valid (tidak ada "sentence" pada payload)
+![image](https://github.com/baihaqiyazid/sentiment-api/assets/89854394/aa09cb6f-142e-4c97-991a-a8a53832e788)
+
+### Method Not Allowed (Jika method tidak sesuai)
+![image](https://github.com/baihaqiyazid/sentiment-api/assets/89854394/8ce856a0-0ccb-4902-a2df-00f0087429c0)
+
